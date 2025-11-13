@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Welcome to HPS Gaya{% endblock %}
+
+{% block content %}
+
+<section id="home" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+    <div class="carousel-inner">
+        {% for img in carousel_images %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <img src="{{ img.image.url }}" class="d-block w-100" alt="{{ img.title }}" style="height: 85vh; object-fit: cover;">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-4 mb-5">
+                {% if content.hero_title %}
+                    <h1 class="display-4 fw-bold text-white animate__animated animate__fadeInDown">{{ content.hero_title }}</h1>
+                {% endif %}
+                {% if content.hero_subtitle %}
+                    <p class="lead text-light animate__animated animate__fadeInUp">{{ content.hero_subtitle }}</p>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#home" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#home" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</section>
+
+
+
+<section class="py-5 bg-light stats-counter">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
+                <i class="bi bi-person-workspace stat-icon"></i>
+                <h3 class="counter" data-target="30">0</h3>
+                <p class="text-muted">Years of Excellence</p>
+            </div>
+            <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
+                <i class="bi bi-people-fill stat-icon"></i>
+                <h3 class="counter" data-target="1500">0</h3>
+                <p class="text-muted">Students Enrolled</p>
+            </div>
+            <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
+                <i class="bi bi-person-check-fill stat-icon"></i>
+                <h3 class="counter" data-target="120">0</h3>
+                <p class="text-muted">Qualified Faculty</p>
+            </div>
+            <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="400">
+                <i class="bi bi-award-fill stat-icon"></i>
+                <h3 class="counter" data-target="50">0</h3>
+                <p class="text-muted">Awards Won</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section id="about" class="container my-5 py-5">
+    <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+            <h2 class="section-title text-center">Directors’s Message</h2>
+            <p class="lead text-muted" style="text-align: justify;">{{ content.principals_welcome_message|linebreaks }}</p>
+        </div>
+        <div class="col-lg-5 text-center">
+            {% comment %} <div class="p-3 border border-5 border-success rounded-circle d-inline-block shadow-lg"> {% endcomment %}
+                <img src="{{ content.principals_photo.url }}" class="img-fluid rounded-circle" alt="Principal" style="max-width: 280px;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-8">
+                <h2 class="section-title text-center">Latest News & Events</h2>
+                <div class="row">
+                    {% for post in latest_posts %}
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 border-0 shadow-sm card-hover">
+                            {% if post.featured_image %}
+                            <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}" style="height: 200px; object-fit: cover;">
+                            {% endif %}
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="fw-bold card-title">{{ post.title }}</h5>
+                                <p class="text-muted small mb-3">{{ post.created_at|date:"F d, Y" }}</p>
+                                <a href="{% url 'post-detail' post.uid %}" class="btn btn-sm btn-outline-success mt-auto">Read More <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <h2 class="section-title text-center">Circulars</h2>
+                <div class="scrolling-list-container shadow-sm">
+                    <ul class="list-group list-group-flush scrolling-list">
+                        {% for doc in academic_documents %}
+                        <li class="list-group-item d-flex align-items-center justify-content-between circular-list-item">
+                            <div>
+                                <span class="badge bg-danger flicker me-2">NEW</span>
+                                <i class="bi bi-file-earmark-pdf-fill text-danger me-2"></i>
+                                <span class="fw-semibold">{{ doc.title }}</span>
+                            </div>
+                            <a href="{{ doc.document_file.url }}" target="_blank" class="badge bg-danger-subtle text-danger-emphasis rounded-pill text-decoration-none p-2">View</a>
+                        </li>
+                        {% endfor %}
+                        </ul>
+                </div>
+            </div>
+        <div class="text-center mt-5">
+            <a href="{% url 'post-list' %}" class="btn btn-success rounded-pill px-5 py-2">View All Updates</a>
+        </div>
+    </div>
+</section>
+
+<section class="py-5" data-aos="fade-up">
+    </section>
+
+<section class="py-5 bg-light testimonial-carousel">
+    <div class="container" data-aos="fade-up">
+        <h2 class="section-title text-center">What Parents Say</h2>
+        <div id="testimonialSlider" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner text-center py-4">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/parent1.jpg' %}" class="rounded-circle shadow-sm mb-3" alt="Parent">
+                    <p class="lead fst-italic">"The holistic approach to education at HPS Gaya is commendable. My child has shown tremendous growth both academically and personally."</p>
+                    <h5 class="fw-bold">- R. K. Sharma</h5>
+                    <p class="text-muted">Parent of Class V Student</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/parent2.jpg' %}" class="rounded-circle shadow-sm mb-3" alt="Parent">
+                    <p class="lead fst-italic">"The faculty is experienced and genuinely cares for the students. The infrastructure and facilities are top-notch."</p>
+                    <h5 class="fw-bold">- Sunita Verma</h5>
+                    <p class="text-muted">Parent of Class VIII Student</p>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialSlider" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialSlider" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+        </div>
+    </div>
+</section>
+
+<section id="gallery" class="container my-5 py-5">
+    <h2 class="section-title text-center">Gallery Highlights</h2>
+    <div class="row">
+        {% for album in latest_albums %}
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'album-detail' album.uid %}" class="text-decoration-none">
+                <div class="card shadow-sm border-0 card-hover gallery-card">
+                    <img src="{{ album.cover_image.url }}" class="card-img" alt="{{ album.title }}" style="height: 250px; object-fit: cover;">
+                    <div class="card-img-overlay">
+                        <h5 class="fw-bold">{{ album.title }}</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container" data-aos="fade-up">
+        <h2 class="section-title text-center">Frequently Asked Questions</h2>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq-1">What is the admission process?</button></h2>
+                <div id="faq-1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">The process starts with online registration, followed by an interaction or assessment, result declaration, and final admission formalities. Please see our <a href="{% url 'admission-procedure' %}">Procedure</a> page for details.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-2">What curriculum do you follow?</button></h2>
+                <div id="faq-2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">We are affiliated with the Central Board of Secondary Education (CBSE), New Delhi, and follow the curriculum prescribed by them.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-3">Do you provide transportation facilities?</button></h2>
+                <div id="faq-3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">Yes, we have a fleet of buses covering major routes across the city. You can inquire about specific routes and fees during the admission process.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

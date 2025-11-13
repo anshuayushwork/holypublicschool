@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Photo Gallery{% endblock title %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Photo Gallery</h1>
+        <p class="lead text-muted">A glimpse into the vibrant life at our school.</p>
+    </div>
+
+    <div class="row">
+        {% for album in albums %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <a href="{% url 'album-detail' album.uid %}" class="text-decoration-none text-dark">
+                    <img src="{{ album.cover_image.url }}" class="card-img-top" alt="{{ album.title }}" style="height: 250px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">{{ album.title }}</h5>
+                        <p class="card-text">{{ album.description|default:"" }}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">No photo albums have been created yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

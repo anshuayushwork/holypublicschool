@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}Admission Procedure - {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-success text-white">
+            <h2 class="mb-0">Admission Procedure (Session 2025-26)</h2>
+        </div>
+        <div class="card-body p-4">
+            
+            <h4 class="text-success">Our Philosophy</h4>
+            <p class="text-muted">We believe in a transparent and fair admission process. Our aim is to identify students who can benefit from our educational environment and contribute to our school community. All admissions are based on merit and the availability of seats.</p>
+            
+            <hr class="my-4">
+
+            <h4 class="text-success">Eligibility Criteria</h4>
+            <p>The required age for admission to different classes as of <strong>April 1, 2025</strong>, is as follows:</p>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Class</th>
+                            <th>Age Requirement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Play Group</td>
+                            <td>2.5 to 3.5 years</td>
+                        </tr>
+                        <tr>
+                            <td>Nursery</td>
+                            <td>3.5 to 4.5 years</td>
+                        </tr>
+                        <tr>
+                            <td>Prep</td>
+                            <td>4.5 to 5.5 years</td>
+                        </tr>
+                        <tr>
+                            <td>Class I</td>
+                            <td>5.5 to 6.5 years</td>
+                        </tr>
+                        <tr>
+                            <td>Class II onwards</td>
+                            <td>Based on the Transfer Certificate from the previous school.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <hr class="my-4">
+
+            <h4 class="text-success">Admission Process: Step-by-Step</h4>
+            <ol class="list-group list-group-numbered">
+                <li class="list-group-item d-flex align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Step 1: Online Registration</div>
+                        Fill out the online registration form, upload the required documents, and pay the non-refundable registration fee through our portal.
+                        <a href="{% url 'application-step-1' %}" class="btn btn-sm btn-outline-success mt-2">Start Registration Now</a>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Step 2: Interaction & Assessment</div>
+                        For Play Group to Class I, a simple, informal interaction with the child and parents will be scheduled. For Class II and above, a written proficiency assessment will be conducted. Dates will be communicated via email.
+                    </div>
+                </li>
+                <li class="list-group-item d-flex align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Step 3: Result Declaration</div>
+                        The list of selected candidates will be published on the school website and displayed on the school notice board. Parents will also be notified via email.
+                    </div>
+                </li>
+                <li class="list-group-item d-flex align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Step 4: Final Admission</div>
+                        Selected candidates must complete all admission formalities, including submission of original documents and payment of fees, within the stipulated time to secure their seat.
+                    </div>
+                </li>
+            </ol>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section id="contact" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title text-center text-danger mb-5 fw-bold">Get In Touch</h2>
+        <div class="row align-items-center">
+            <!-- Left: Google Map -->
+            <div class="col-md-6 mb-4 mb-md-0">
+                <div class="ratio ratio-16x9 rounded shadow">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.848839014168!2d84.9452368150017!3d24.80050898408197!4m5!3m4!1s0x39f32940c31a7c3d%3A0x93c6af43d3b73c4!8m2!3d24.800504!4d84.9474255"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Right: Contact Form -->
+            <div class="col-md-6">
+                <div class="card shadow-lg border-0 p-4">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Enter Your Name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Enter Your Email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Enter Phone Number" name="phone" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Enter Your Address" name="address">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="3" placeholder="Write Your Message" name="message" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-danger px-4 fw-bold">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact info below -->
+        <div class="row text-center mt-5">
+            <div class="col-md-4 mb-3">
+                <div class="p-3 border rounded shadow-sm bg-white">
+                    <h5 class="fw-bold text-success">Phone</h5>
+                    <p class="mb-0">+91 8521092596</p>
+                    <p>+91 7091499421</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="p-3 border rounded shadow-sm bg-white">
+                    <h5 class="fw-bold text-success">Email</h5>
+                    <p class="mb-0">info@hpsgaya.com</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="p-3 border rounded shadow-sm bg-white">
+                    <h5 class="fw-bold text-success">Address</h5>
+                    <p class="mb-0">At Dubhal, Gaya, Bihar - 823001</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

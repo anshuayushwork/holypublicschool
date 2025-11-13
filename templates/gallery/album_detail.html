@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ album.title }}{% endblock title %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="text-center mb-4">
+        <h1 class="fw-bold">{{ album.title }}</h1>
+        {% if album.description %}
+            <p class="lead text-muted">{{ album.description }}</p>
+        {% endif %}
+        <a href="{% url 'album-list' %}" class="btn btn-outline-secondary mt-2">&larr; Back to All Albums</a>
+    </div>
+    
+    <hr class="mb-5">
+
+    <div class="row g-3">
+        {% for photo in album.photos.all %}
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-sm">
+                <a href="{{ photo.image.url }}" target="_blank">
+                    <img src="{{ photo.image.url }}" class="img-fluid" alt="{{ photo.caption|default:'Gallery Image' }}" style="height: 250px; width: 100%; object-fit: cover;">
+                </a>
+                {% if photo.caption %}
+                <div class="card-body py-2">
+                    <p class="card-text text-center small">{{ photo.caption }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">There are no photos in this album yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,63 @@
+{% extends 'admissions/admission_base.html' %}
+
+{% block title %}Online Registration - Step 1{% endblock %}
+
+{% block content %}
+
+
+<div class="col-lg-8 p-5 text-center">
+        <h3 class="fw-bold">Final Step: Application Fee</h3>
+        <p class="text-muted">Please complete the payment to finalize your application.</p>
+        
+        <div class="card mt-5">
+            <div class="card-body">
+                <h5 class="card-title">Payment Summary</h5>
+                <p class="card-text text-muted">Application for: <strong>{{ application.first_name }} {{ application.last_name }}</strong></p>
+                <p class="card-text text-muted">Application ID: <strong>{{ application.application_number }}</strong></p>
+                
+                <hr>
+                
+                <p class="h3">Amount to Pay: <strong>₹{{ amount }}</strong></p>
+                
+                <div class="d-grid mt-4">
+                    <button id="rzp-button1" class="btn btn-success btn-lg">Pay Now Securely</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        var options = {
+            "key": "{{ razorpay_key_id }}",
+            "amount": "{{ amount }}", // Amount is in paise
+            "currency": "{{ currency }}",
+            "name": "Delhi Public School, Gaya",
+            "description": "Admission Application Fee",
+            "order_id": "{{ razorpay_order_id }}",
+            "handler": function (response){
+                // On successful payment, redirect to the confirmation page
+                window.location.href = "{% url 'payment-confirmation' %}";
+            },
+            "prefill": {
+                "name": "{{ application.first_name }} {{ application.last_name }}",
+                "email": "{{ application.email_id }}",
+                "contact": "{{ application.primary_contact_number }}"
+            },
+            "theme": {
+                "color": "#198754" // Matching the site's green theme
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        document.getElementById('rzp-button1').onclick = function(e){
+            rzp1.open();
+            e.preventDefault();
+        }
+    </script>
+</body>
+</html>
+
+{% endblock %}

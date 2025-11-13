@@ -1,0 +1,39 @@
+
+{% extends 'admissions/admission_base.html' %}
+
+{% block title %}Online Registration - Step 1{% endblock %}
+
+{% block content %}
+
+
+    <div class="col-lg-8 p-5 text-center">
+        <div class="d-flex justify-content-between align-items-center">
+            <h3 class="fw-bold">Registration Form</h3>
+            <span class="badge bg-primary-subtle text-primary-emphasis rounded-pill">Step 3 / 3</span>
+        </div>
+        
+        <div class="progress my-4" style="height: 10px;">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"></div>
+        </div>
+
+        <div class="mt-5">
+            <h2 class="text-success">Application Submitted Successfully! 🎉</h2>
+            <p class="lead mt-3">Thank you, **{{ application.first_name }}**!</p>
+            <p class="text-muted">Your application has been received. Please keep your Application ID for future reference.</p>
+            
+            <div class="alert alert-success mt-4">
+                <h4 class="alert-heading">Your Application ID</h4>
+                <p class="h3 mb-0">{{ application.application_number }}</p>
+            </div>
+
+            <p class="mt-4">The next step is to complete the payment of the application fee.</p>
+            
+            <div class="d-grid mt-4">
+                <a href="{% url 'initiate-payment' pk=application.uid %}" class="btn btn-success btn-lg">Proceed to Payment</a>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

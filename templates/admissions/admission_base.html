@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}HPS Gaya Admissions{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #eef2f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .form-container { background-color: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .sidebar {
+            background: linear-gradient(135deg, #0a4928, #198754); 
+            color: white; 
+            border-top-left-radius: 15px; 
+            border-bottom-left-radius: 15px;
+            position: sticky;
+            top: 2rem;
+            align-self: flex-start;
+            height: calc(100vh - 4rem);
+            overflow-y: auto;
+        }
+        
+        /* --- Styles for form elements, to be used by child templates --- */
+        .form-section legend { font-weight: 600; font-size: 1.2rem; color: #0a4928; padding-bottom: 0.75rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e9ecef; }
+        .form-wrapper p { margin-bottom: 1.25rem; }
+        .form-wrapper label { font-weight: 500; font-size: 0.85rem; color: #495057; display: block; margin-bottom: 0.5rem; }
+        .form-wrapper input, .form-wrapper select, .form-wrapper textarea { display: block; width: 100%; padding: 0.75rem 1rem; border: 1px solid #ced4da; border-radius: 8px; transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
+        .form-wrapper input:focus, .form-wrapper select:focus { border-color: #198754; box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.2); outline: 0; }
+        .form-wrapper .errorlist { list-style-type: none; padding: 0; margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #dc3545; }
+    </style>
+</head>
+<body>
+
+<div class="container my-5">
+<div class="row form-container">
+    
+    <!-- === Sidebar Column (This is now part of the base) === -->
+    <div class="col-lg-4 sidebar p-4 d-flex flex-column">
+        <div>
+            
+<a href="{% url 'home' %}" class="d-block mb-3">
+            <img src="{% static 'images/logo (2).png' %}" alt="hps Gaya Logo" height="80">
+        </a>
+            <h2 class="fw-bold">HOlY PUBLIC SCHOOL, GAYA</h2>
+            <p class="lead">ONLINE REGISTRATION PORTAL</p>
+            <hr class="border-light">
+            <div class="my-4">
+                <a href="{% url 'find-application' %}" class="btn btn-light btn-sm d-block text-start mb-2"><strong>Click Here for Payment</strong><small class="d-block">If Form is already filled</small></a>
+                <a href="#" class="btn btn-light btn-sm d-block text-start"><strong>Click Here to Download Form</strong></a>
+            </div>
+            <p><small>Affiliated to C.B.S.E, New Delhi</small></p>
+        </div>
+        <div class="mt-auto">
+            <p class="mb-1">www.hpsgaya.com</p>
+        </div>
+    </div>
+
+    <!-- === Main Content Column === -->
+    <div class="col-lg-8 p-5">
+        
+        <!-- This block is where the content from other pages will be injected -->
+        {% block content %}
+        {% endblock %}
+        
+    </div>
+
+</div>
+</div>
+</body>
+</html>

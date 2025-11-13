@@ -1,0 +1,30 @@
+{% extends 'admissions/admission_base.html' %}
+
+{% block title %}Online Registration - Step 1{% endblock %}
+
+{% block content %}
+
+    <h3 class="fw-bold">Registration Form</h3>
+    <p class="text-muted">Enter the information below to get started.</p>
+    <div class="progress my-4" style="height: 10px;">
+        <div class="progress-bar bg-success" role="progressbar" style="width: 33%;"></div>
+    </div>
+
+    <form method="post" enctype="multipart/form-data" class="mt-4">
+        {% csrf_token %}
+        
+        <fieldset class="form-section">
+            <legend>Student & Parent Information</legend>
+            
+            <div class="form-wrapper">
+                {{ form.as_p }}
+            </div>
+
+        </fieldset>
+
+        <div class="d-grid mt-4">
+            <button type="submit" class="btn btn-success btn-lg">Save and Proceed to Step 2</button>
+        </div>
+    </form>
+
+{% endblock %}

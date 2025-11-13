@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock title %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- Post Title -->
+            <h1 class="fw-bold mb-3">{{ post.title }}</h1>
+            
+            <!-- Post Meta -->
+            <p class="text-muted">
+                Published on {{ post.created_at|date:"F d, Y" }} in <span class="badge bg-primary">{{ post.category.name }}</span>
+            </p>
+
+            <!-- Featured Image -->
+            {% if post.featured_image %}
+                <img src="{{ post.featured_image.url }}" class="img-fluid rounded shadow-sm my-4" alt="{{ post.title }}">
+            {% endif %}
+            
+            <!-- Post Content -->
+            <div class="fs-5 post-content">
+                {{ post.content|linebreaks }}
+            </div>
+            
+            <hr class="my-5">
+            
+            <a href="{% url 'post-list' %}" class="btn btn-outline-secondary">&larr; Back to All Posts</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

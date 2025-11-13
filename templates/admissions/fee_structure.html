@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}Fee Structure - {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-success text-white">
+            <h2 class="mb-0">Fee Structure (Session 2025-26)</h2>
+        </div>
+        <div class="card-body p-4">
+            
+            <p class="text-muted">The following is the approved fee structure for the academic session 2025-26. All fees are quoted in Indian Rupees (₹).</p>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-light text-center">
+                        <tr>
+                            <th>Class</th>
+                            <th>Admission Fee (One-Time)</th>
+                            <th>Caution Money (Refundable)</th>
+                            <th>Annual Charges</th>
+                            <th>Tuition Fee (Quarterly)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        <tr>
+                            <td>Play Group - Prep</td>
+                            <td>25,000</td>
+                            <td>5,000</td>
+                            <td>12,000</td>
+                            <td>15,000</td>
+                        </tr>
+                        <tr>
+                            <td>I - V</td>
+                            <td>25,000</td>
+                            <td>5,000</td>
+                            <td>14,000</td>
+                            <td>18,000</td>
+                        </tr>
+                        <tr>
+                            <td>VI - VIII</td>
+                            <td>25,000</td>
+                            <td>5,000</td>
+                            <td>16,000</td>
+                            <td>20,000</td>
+                        </tr>
+                        <tr>
+                            <td>IX - X</td>
+                            <td>25,000</td>
+                            <td>5,000</td>
+                            <td>18,000</td>
+                            <td>22,000</td>
+                        </tr>
+                        <tr>
+                            <td>XI - XII</td>
+                            <td>25,000</td>
+                            <td>5,000</td>
+                            <td>20,000</td>
+                            <td>25,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <hr class="my-4">
+
+            <h4 class="text-success">Payment Schedule</h4>
+            <p>Tuition fees are payable quarterly as per the following schedule:</p>
+            <ul class="list-group">
+                <li class="list-group-item"><strong>First Quarter:</strong> By 15th April</li>
+                <li class="list-group-item"><strong>Second Quarter:</strong> By 15th July</li>
+                <li class="list-group-item"><strong>Third Quarter:</strong> By 15th October</li>
+                <li class="list-group-item"><strong>Fourth Quarter:</strong> By 15th January</li>
+            </ul>
+
+            <div class="alert alert-warning mt-4">
+                <strong>Important Note:</strong> A late fee of ₹100 per day will be applicable after the due date. Admission and Annual fees are non-refundable.
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'admissions/admission_base.html' %}
+
+{% block title %}Online Registration - Step 1{% endblock %}
+
+{% block content %}
+<div class="col-lg-8 p-5">
+        <div class="d-flex justify-content-between align-items-center">
+            <h3 class="fw-bold">Registration Form</h3>
+            <span class="badge bg-primary-subtle text-primary-emphasis rounded-pill">Step 2 / 3</span>
+        </div>
+        <p class="text-muted">Please upload the required documents to finalize your application.</p>
+        
+        <div class="progress my-4" style="height: 10px;">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 66%;"></div>
+        </div>
+
+        <form method="post" enctype="multipart/form-data" class="mt-4">
+            {% csrf_token %}
+            
+            <fieldset class="form-section">
+                <legend>Upload Documents</legend>
+                
+                <p class="text-muted small">Please upload documents like Birth Certificate, Previous Marksheet, etc. If a document is not applicable, you may leave the field blank.</p>
+                
+                <div class="form-wrapper">
+                    {{ form.as_p }}
+                </div>
+
+            </fieldset>
+
+            <div class="d-grid mt-4">
+                <button type="submit" class="btn btn-success btn-lg">Submit Final Application</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+</div>
+</body>
+</html>
+
+{% endblock %}
+
+
