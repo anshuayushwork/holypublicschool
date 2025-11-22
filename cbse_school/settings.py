@@ -24,12 +24,13 @@ TEMPLATE_DIR = os.path.join(BASE_DIR , 'templates')
 SECRET_KEY = 'django-insecure-!xk6tai!me(u&e*w3q^!%5@=oy2xp+(nlr-3@8scb7@64&swrf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'ronna-unbungling-shantay.ngrok-free.dev', # <-- Add this line
-    '127.0.0.1',
-    'localhost',
+    'hpsgaya.com'
+    
+    '165.22.212.28'
 ]
 
 
@@ -52,7 +53,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -136,18 +137,17 @@ USE_TZ = True
 #     BASE_DIR / 'static',
 # ]
 
-# MEDIA_ROOT = BASE_DIR / 'media'
-# MEDIA_URL = '/media/'
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
+
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+STATIC_ROOT = BASE_DIR / "static"
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
